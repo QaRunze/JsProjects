@@ -1,21 +1,5 @@
-
-  <style>
-  #resizable { width: 100px; height: 100px; padding: 0.5em; }
-    </style>
-
-  <link rel="stylesheet" href="http://artopie.de/jquery-ui.css">
-  <script src="http://artopie.de/jquery.js"></script>
-  <script src="http://artopie.de/jquery-ui.js"></script>
-  
-  <script type="text/jquery">
-  $(function() {
-    $( "#resizable" ).resizable({
-      aspectRatio: 16 / 9
-    });
-  });
-  </script>
-
-  <script type="application/javascript">
+<head>
+<script type="application/javascript">
 function draw() {
 var canvas = document.getElementById('resizable');
         if (canvas.getContext){
@@ -24,27 +8,22 @@ var canvas = document.getElementById('resizable');
   alert("Your browser does not support <canvas> elements/HTML5")
 }
 
-canvas.width = resizable.width;
-canvas.height = resizable.height;
 
-
+ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height);
 ctx.save();
 
 
 var i = 0;
 var j = 0;
-ctx.clearRect( i, j, ctx.canvas.width, ctx.canvas.height);
+
 
 for (; i <= canvas.style.width; i++) {
 for (; j <= canvas.style.height; j++) 
 {
-    ctx.beginPath();
     ctx.moveTo(i,j);
     ctx.lineTo(i,j);
     ctx.strokeStyle = '#'+Math.floor(Math.random()*16777216).toString(16);
-    ctx.closePath();
-    ctx.stroke();
-    
+    ctx.save();
 }
 }
 }
@@ -54,9 +33,13 @@ function reset()
    ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height);
 } 
     </script>
+  </head>
 
-<canvas id="resizable"></canvas>
+<body>
+
+<canvas id="resizable" wdith="150" height="150" style="border:1px;"></canvas>
 
 <button onclick="draw()">GO</button> 
 
 <button onclick="reset()">Reset</button>
+</body>
