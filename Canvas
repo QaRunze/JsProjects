@@ -17,16 +17,7 @@ var i = 0;
 var j = 0;
 
 
-for (; i <= canvas.width; i++) {
-for (; j <= canvas.height; j++) 
-{
-    ctx.moveTo(i,j);
-    ctx.lineTo(i,j);
-    ctx.strokeStyle = '#'+Math.floor(Math.random()*16777216).toString(16);
-    ctx.save();
-}
-}
-}
+var iData = ctx.createImageData(canvas.width, canvas.height); for(var i=0; i<iData.data.length; i+=4){iData.data[i]=Math.floor(Math.random()*255);iData.data[i+1]=Math.floor(Mat‌​h.random()*255);iData.data[i+2]=Math.floor(Math.random()*255);iData.data[i+3]=255‌​;}ctx.putImageData(iData,0,0)
 
 function reset()
 {
