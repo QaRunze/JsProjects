@@ -1,8 +1,9 @@
+
 <script type="application/javascript">
 function draw() {
-var canvas = document.getElementById('resizable');
+canvas = document.getElementById('resizable');
         if (canvas.getContext){
-          var ctx = canvas.getContext('2d');
+          ctx = canvas.getContext('2d');
         } else {
   alert("Your browser does not support <canvas> elements/HTML5")
 }
@@ -36,7 +37,7 @@ function reset()
 
 
 
-<canvas id="resizable" width="150" height="150" style="border:1px;"></canvas>
+<canvas id="resizable" width="500" height="500" style="border:1px;"></canvas>
 
 <button onclick="draw()">GO</button> 
 
