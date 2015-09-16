@@ -1,0 +1,44 @@
+
+<script type="application/javascript">
+function draw() {
+canvas = document.getElementById('resizable');
+        if (canvas.getContext){
+          ctx = canvas.getContext('2d');
+        } else {
+  alert("Your browser does not support <canvas> elements/HTML5")
+}
+
+
+ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height);
+ctx.save();
+
+
+var i = 0;
+var j = 0;
+
+
+var iData = ctx.createImageData(canvas.width, canvas.height); 
+for(var i=0; i<iData.data.length; i+=4)
+{
+    iData.data[i]=Math.floor(Math.random()*255);
+    iData.data[i+1]=Math.floor(Math.random()*255);
+    iData.data[i+2]=Math.floor(Math.random()*255);
+    iData.data[i+3]=255;
+    }
+ctx.putImageData(iData,0,0);
+}
+
+function reset()
+{
+   ctx.clearRect( 0, 0, ctx.canvas.width, ctx.canvas.height);
+} 
+    </script>
+
+
+
+
+<canvas id="resizable" width="500" height="500" style="border:1px;"></canvas>
+
+<button onclick="draw()">GO</button> 
+
+<button onclick="reset()">Reset</button>
